@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ビー玉ゲーム</title>
+<script src="assets/js/script.js"></script>
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/reset.css">
+</head>
+<body>
+<x-dc>
+
+<helmet></helmet>
+<div style="min-height:100vh;width:100%;background:#f7f8fa;font-family:'Open Sans',YakuHanJP_Noto,'Noto Sans JP',sans-serif;color:#393c41;display:flex;flex-direction:column;align-items:center;padding:24px 16px 40px;gap:20px;">
+
+  <div style="width:100%;max-width:560px;display:flex;align-items:stretch;gap:10px;">
+    <div style="flex:1;background:#ffffff;border:1px solid rgba(57,60,65,.12);border-radius:8px;padding:8px 14px;display:flex;flex-direction:column;gap:2px;">
+      <span style="font-size:.6875rem;color:rgba(57,60,65,.6);font-weight:600;letter-spacing:.02em;">ステージ</span>
+      <span ref="{{ onStage }}" style="font-size:1.125rem;font-weight:700;font-variant-numeric:tabular-nums;">1 / 3</span>
+    </div>
+    <div style="flex:1;background:#ffffff;border:1px solid rgba(57,60,65,.12);border-radius:8px;padding:8px 14px;display:flex;flex-direction:column;gap:2px;">
+      <span style="font-size:.6875rem;color:rgba(57,60,65,.6);font-weight:600;letter-spacing:.02em;">タイム</span>
+      <span ref="{{ onTimer }}" style="font-size:1.125rem;font-weight:700;font-family:'Roboto Mono',monospace;">00:00.0</span>
+    </div>
+    <div style="flex:1;background:#ffffff;border:1px solid rgba(57,60,65,.12);border-radius:8px;padding:8px 14px;display:flex;flex-direction:column;gap:2px;">
+      <span style="font-size:.6875rem;color:rgba(57,60,65,.6);font-weight:600;letter-spacing:.02em;">落下</span>
+      <span ref="{{ onFalls }}" style="font-size:1.125rem;font-weight:700;font-variant-numeric:tabular-nums;">0</span>
+    </div>
+    <div style="flex:1;background:#ffffff;border:1px solid rgba(57,60,65,.12);border-radius:8px;padding:8px 14px;display:flex;flex-direction:column;gap:2px;">
+      <span style="font-size:.6875rem;color:rgba(57,60,65,.6);font-weight:600;letter-spacing:.02em;">スコア</span>
+      <span ref="{{ onScore }}" style="font-size:1.125rem;font-weight:700;font-variant-numeric:tabular-nums;">0</span>
+    </div>
+    <button onclick="{{ restart }}" style="flex:none;height:auto;padding:8px 14px;border-radius:8px;border:1px solid rgba(57,60,65,.24);background:#ffffff;color:#393c41;font-size:.875rem;font-weight:600;cursor:pointer;">やり直す</button>
+  </div>
+
+  <div style="position:relative;width:100%;max-width:560px;">
+    <canvas ref="{{ onCanvas }}" style="display:block;width:100%;height:auto;aspect-ratio:1/1;border-radius:8px;box-shadow:0 0 6px rgba(0,0,0,.08),0 6px 16px 2px rgba(0,0,0,.12);background:#edeef0;touch-action:none;"></canvas>
+    <div ref="{{ onOverlay }}" style="position:absolute;inset:0;display:none;align-items:center;justify-content:center;border-radius:8px;background:rgba(31,32,36,.32);">
+      <div style="background:#ffffff;border-radius:12px;padding:28px 30px;min-width:240px;text-align:center;box-shadow:0 4px 16px -16px rgba(0,0,0,.28),0 16px 48px -8px rgba(0,0,0,.24);display:flex;flex-direction:column;gap:6px;align-items:center;">
+        <span ref="{{ onOvIcon }}" style="width:48px;height:48px;border-radius:999px;margin-bottom:4px;display:block;"></span>
+        <h2 ref="{{ onOvTitle }}" style="margin:0;font-size:1.3125rem;font-weight:700;">ステージクリア</h2>
+        <p ref="{{ onOvSub }}" style="margin:0 0 8px;font-size:.875rem;color:rgba(57,60,65,.6);font-variant-numeric:tabular-nums;">タイム 00:00.0</p>
+        <button ref="{{ onOvBtn }}" onclick="{{ onOverlayAction }}" style="height:40px;padding:0 22px;border-radius:4px;border:none;background:#1f7acc;color:#fff;font-size:1rem;font-weight:600;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 1px 2px rgba(0,0,0,.12);">次のステージ</button>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+</x-dc>
+<!-- game.js is inlined here by build.mjs -->
+<script type="text/x-dc" data-dc-script="">
+@@GAME_JS@@
+</script>
+</body>
+</html>
